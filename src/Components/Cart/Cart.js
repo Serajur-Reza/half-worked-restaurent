@@ -31,11 +31,11 @@ const Cart = () => {
     const handlePlaceOrder=()=>{
         setCart([]);
         setOrderPlaced(true)
-        processOrder()
+        // processOrder()
         window.location.pathname= '/ship'
         console.log("Order Completed");
     }
-    
+
     for(let i=0; i < cart.length; i++){
         const product= cart[i];
         price= price + (product.quantity * product.price)
@@ -69,15 +69,15 @@ const Cart = () => {
     }
     return (
         <div className="container">
-            
+
             <div className="cart-info">
                 <h3>Items ordered: {cart.length}</h3>
-                
+
                 <h3>Product Price: ${formatNumber(price)}</h3>
                 <h3>Tax: ${tax}</h3>
                 <h3>Shipping: ${shipping}</h3>
                 <h3>Total Price: ${grandTotal}</h3>
-                
+
                 <Link to="/cart">
                     <button onClick={()=> handlePlaceOrder()} className='btn btn-danger'>Place Order</button>
                 </Link>
@@ -85,7 +85,7 @@ const Cart = () => {
                     thankYou
                 }
                 </div>
-            
+
         </div>
     );
 };

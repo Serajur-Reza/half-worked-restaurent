@@ -2,12 +2,14 @@ import React from 'react';
 import { useForm } from 'react-hook-form'
 import './Ship.css'
 import { useAuth } from '../Login/useAuth';
+import { processOrder } from '../../utilities/databaseManager';
 
 
 const Ship = () => {
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => {
         console.log("thank you")
+        processOrder()
     }
     const auth= useAuth();
 

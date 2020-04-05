@@ -25,6 +25,7 @@ const Breakfast = () => {
         <div className="container">
             <div className="row">
                 {
+                    
                     breakFast.map(food=> <div className="col-md-4"><Food key={food.key} food={food}></Food></div>)
                 }
             </div>

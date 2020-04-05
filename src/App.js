@@ -20,6 +20,9 @@ import Dinner from './Components/Menu/Dinner';
 import Login from './Components/Login/Login';
 import Ship from './Components/Ship/Ship'
 import { AuthContextProvider, PrivateRoute } from './Components/Login/useAuth';
+import SignIn from './Components/Login/SignIn';
+import SignUp from './Components/Login/SignUp';
+import Inventory from './Components/Inventory/Inventory';
 
 function App() {
   return (
@@ -30,7 +33,7 @@ function App() {
       <Router>
         <Switch>
 
-          <Route path='/breakfast'>
+          {/* <Route path='/breakfast'>
             <CategoryHeader></CategoryHeader>
             <Breakfast></Breakfast>
           </Route>
@@ -43,7 +46,7 @@ function App() {
           <Route path='/dinner'>
             <CategoryHeader></CategoryHeader>
             <Dinner></Dinner>
-          </Route>
+          </Route> */}
 
           <PrivateRoute path='/cart'>
             <Cart></Cart>
@@ -53,8 +56,22 @@ function App() {
             <Review></Review>
           </Route>
 
+          <Route path='/inventory'>
+            <Inventory></Inventory>
+          </Route>
+
           <Route path='/food/:foodId'>
             <Food_Detail></Food_Detail>
+          </Route>
+
+          <Route path="/signin">
+            
+            <SignIn></SignIn>
+          </Route>
+
+          <Route path="/signup">
+            
+            <SignUp></SignUp>
           </Route>
 
           <Route path="/login">
@@ -66,7 +83,7 @@ function App() {
           </Route>
 
           <Route exact path='/'>
-            <CategoryHeader></CategoryHeader>
+            {/* <CategoryHeader></CategoryHeader> */}
             <Menu></Menu>
           </Route>
 

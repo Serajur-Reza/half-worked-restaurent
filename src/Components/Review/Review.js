@@ -23,13 +23,28 @@ const Review = () => {
     useEffect(()=>{
         const savedCart=getDatabaseCart();
         const productKeys= Object.keys(savedCart)
-        const cartProducts= productKeys.map( key=> {
-            const product= data.find( pd=> pd.key===key);
-            product.quantity= savedCart[key]
-            return product
+
+        console.log(productKeys)
+
+        fetch("https://red-onion-api.herokuapp.com/getFoodsByKey",{
+
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(productKeys)
+
+        }).then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            const cartProducts= productKeys.map( key=> {
+                const product= data.find( pd=> pd.key===key);
+                product.quantity= savedCart[key]
+                return product
+            })
+            setCart(cartProducts)
+            // console.log(cartProducts)
         })
-        setCart(cartProducts)
-        console.log(cartProducts)
     },[])
 
     if(cart.length){

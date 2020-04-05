@@ -9,10 +9,23 @@ import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseMana
 const Food_Detail = () => {
     const {foodId}=useParams();
 
+    const [food, setFood]= useState(null)
+
+    useEffect(()=>{
+        fetch('https://red-onion-api.herokuapp.com/fooditems/'+foodId)
+        .then(res=> res.json())
+        .then(data=> {
+            console.log(data)
+            setFood(data)
+            
+        })
+    },[])
+
+
     let [count, setCount]=useState(1)
     const [cart, setCart]=useState([])
     
-    const food=data.find(item=> foodId===item.key)
+    // const food=data.find(item=> foodId===item.key)
     //console.log(food);
 
     useEffect(()=>{
@@ -73,7 +86,9 @@ const Food_Detail = () => {
         // console.log(newCart.length);
     }
 
-    return (
+
+    if(food){
+        return (
         <div className="food-detail">
             <div className='container food-info'>
                 <h4>{food.name}</h4>
@@ -95,6 +110,15 @@ const Food_Detail = () => {
             
         </div>
     );
+        }
+
+        else{
+            return(
+                <div>
+                    <h1>No data available</h1>
+                </div>
+            )
+        }
 };
 
 export default Food_Detail;

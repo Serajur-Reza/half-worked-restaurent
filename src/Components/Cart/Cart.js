@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabaseCart, processOrder } from '../../utilities/databaseManager';
+import { getDatabaseCart} from '../../utilities/databaseManager';
 import data from '../../Data';
 import { Link } from 'react-router-dom';
 import './Cart.css'
@@ -31,7 +31,6 @@ const Cart = () => {
     const handlePlaceOrder=()=>{
         setCart([]);
         setOrderPlaced(true)
-        // processOrder()
         window.location.pathname= '/ship'
         console.log("Order Completed");
     }
